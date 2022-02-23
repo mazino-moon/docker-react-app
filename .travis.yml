@@ -27,9 +27,9 @@ deploy:
   bucket_path: "docker-react-app"
   on:
     branch: master
-#키설정
-access_key_id: $aws_key
-seceret_access_key: $aws_sc
+  #키설정
+  access_key_id: $aws_key
+  seceret_access_key: $aws_sc
 #끝날떄
 after_success:
   - echo "test end"
