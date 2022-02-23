@@ -1,13 +1,35 @@
+#관리자 권한
 sudo: required
+#플랫폼 선택
 language: generic
+#서비스
 services:
   - docker
 
+#처음에 실행되는거
 before_install:
   - echo "start image with docker"
   - docker build -t mazino/docker-app -f Dockerfile.dev .
+#다음에 실행되는거
 script:
   - docker run -e CI=true mazino/docker-app npm run test -- --coverage
-
+#배포
+deploy:
+  #종류
+  provide: elasticbeanstalk
+  #써져있음
+  region: "ap-northeast-2"
+  app: "docker-react-app"
+  env: "Dockerreactapp-env"
+  #s3버킷
+  bucket_name: "elasticbeanstalk-ap-northeast-2-680904020347"
+  #app과 동일하게
+  bucket_path: "docker-react-app"
+  on:
+    branch: master
+#키설정
+access_key_id: $aws_key
+seceret_access_key: $aws_sc
+#끝날떄
 after_success:
   - echo "test end"
