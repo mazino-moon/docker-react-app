@@ -29,4 +29,4 @@ deploy:
     branch: master
   #키설정
   access_key_id: $aws_key
-  seceret_access_key: $aws_sc
+  secret_access_key: $aws_sc
