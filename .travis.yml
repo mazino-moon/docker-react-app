@@ -27,6 +27,6 @@ deploy:
   bucket_path: "docker-react-app"
   on:
     branch: master
-  #키설정
+  #키설정ss
   access_key_id: $aws_key
   secret_access_key: $aws_sc
